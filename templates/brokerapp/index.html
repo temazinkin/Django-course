@@ -1,0 +1,32 @@
+{% extends 'brokerapp/base.html' %}
+
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>TRADE</th>
+                <th>DATE</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>AMOUNT</th>
+                <th>BROKER</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for trade in trades %}
+                <tr>
+                    <td>{{ trade.title }}</td>
+                    <td>{{ trade.date | date:"j F Y"}}
+                        {{ trade.date | date:"d/m/Y"}}
+                    </td>
+                    <td>${{ trade.price | floatformat:"2g" }}</td>
+                    <td>{{ trade.quantity }}</td>
+                    <td>${{ trade.amount | floatformat:"2g" }}</td>
+                    <td>{{ trade.broker }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
